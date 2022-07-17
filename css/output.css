@@ -763,10 +763,6 @@ video {
   max-width: 120px;
 }
 
-.max-w-\[260px\] {
-  max-width: 260px;
-}
-
 .origin-top-left {
   transform-origin: top left;
 }
@@ -810,6 +806,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .scroll-smooth {
@@ -1315,10 +1315,6 @@ video {
 
   .lg\:w-2\/3 {
     width: 66.666667%;
-  }
-
-  .lg\:w-full {
-    width: 100%;
   }
 
   .lg\:max-w-full {
