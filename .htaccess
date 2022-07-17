@@ -1,0 +1,6 @@
+RewriteEngine On
+#rewrite root to subfolder
+#including all files and folders
+#exclude the destination folder
+RewriteCond %{REQUEST_URI} !^/public [NC]
+RewriteRule ^(.*)$ /public/$1 [L]
