@@ -461,15 +461,15 @@
             <div class="w-full lg:w-2/3 lg:mx-auto">
                 <div class="w-full px-4 mb-8">
                     <label for="name" class="text-base text-primary font-bold">Nama</label>
-                    <input type="text" id="name" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                    <input type="text" id="name" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary" required>
                 </div>
                 <div class="w-full px-4 mb-8">
                     <label for="email" class="text-base text-primary font-bold">Email</label>
-                    <input type="text" id="email" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                    <input type="email" id="email" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary" required>
                 </div>
                 <div class="w-full px-4 mb-8">
                     <label for="message" class="text-base text-primary font-bold">Pesan</label>
-                    <textarea type="text" id="message" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"></textarea>
+                    <textarea type="text" id="message" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32" required></textarea>
                 </div>
                 <div class="w-full px-4">
                     <button type="submit" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500 ">Kirim</button>
@@ -551,34 +551,16 @@
             e.preventDefault();
 
             const data = {
-                From: {
-                    Email: "aldinaufalalyyafi@gmail.com",
-                    Name: "aldy-portfolio-noreply"
-                },
-                To: [
-                    {
-                        Email: "mi18.6701180122@gmail.com",
-                        Name: "aldy naufal"
-                    },
-                ],
-                Subject: "Your email flight plan!",
-                TextPart: "",
-                HTMLPart: "<h3>Dear "+$('#name').val()+", welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!</h3><br />May the delivery force be with you!",
-            };
-
-            // Your Basic Auth credentials
-            const username = "de74ebed79c1efbd9663f30cd81fe287";
-            const password = "7944091138920adab59bf2c60840bff7";
-            const auth = btoa(username + ':' + password); // Encode to Base64
+                name: $('#name').val(),
+                email: $('#email').val(),
+                description: $('#message').val()
+            }
 
             $.ajax({
-                url: 'https://api.mailjet.com/v3.1/send', // Replace with your actual API URL
+                url: 'http://my-portofolio-backend-31cc3fdcd57b.herokuapp.com/api/send-email', // Replace with your actual API URL
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
-                headers: {
-                'Authorization': 'Basic ' + auth
-                },
                 success: function(response) {
                 // $('#result').html('<p>Success: ' + JSON.stringify(response) + '</p>');
                     console.log('berhasil');
