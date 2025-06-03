@@ -545,8 +545,7 @@
 
     </script>
 
-    <script type="module">
-
+    <script>
         $('#contact-form').on('submit', function(e) {
             e.preventDefault();
 
@@ -564,6 +563,7 @@
                 success: function(response) {
                 // $('#result').html('<p>Success: ' + JSON.stringify(response) + '</p>');
                     console.log('berhasil');
+                    location.reload();
                 },
                 error: function(xhr, status, error) {
                 // $('#result').html('<p>Error: ' + xhr.responseText + '</p>');
