@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/output.css">
+    <link rel="stylesheet" href="css/output.css">
     <title>CV - Aldy Naufal</title>
     <!-- Include marked.js for markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -145,10 +145,10 @@
     </div>
 
     <!-- Language script -->
-    <script src="/public/js/lang.js"></script>
+    <script src="public/js/lang.js"></script>
     <script>
         function loadCV() {
-            const cvFile = currentLang === 'id' ? '../cv_id.md' : '../cv_en.md';
+            const cvFile = currentLang === 'id' ? 'cv_id.md' : 'cv_en.md';
 
             document.getElementById('cv-content').innerHTML = '<p class="text-center text-secondary">Loading CV...</p>';
 
