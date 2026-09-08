@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <title>CV - Aldy Naufal</title>
+    <!-- Include marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Include html2pdf.js for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* Styling khusus agar Markdown tampil rapi di dalam Tailwind */
+        #cv-content h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        #cv-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #06b6d4;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #06b6d4;
+            padding-bottom: 0.5rem;
+        }
+
+        #cv-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #cv-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.625;
+            text-align: justify;
+        }
+
+        #cv-content ul {
+            list-style-type: disc;
+            list-style-position: outside;
+            padding-left: 1.5rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        #cv-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        #cv-content strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        #cv-content a {
+            color: #06b6d4;
+            text-decoration: none;
+        }
+
+        #cv-content a:hover {
+            text-decoration: underline;
+        }
+
+        #cv-content hr {
+            margin: 2rem 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        #cv-content em {
+            font-style: italic;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* CSS untuk mencegah elemen terpotong saat convert ke PDF */
+        #cv-content h2,
+        #cv-content h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+
+        #cv-content p {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* Khusus untuk p yang langsung diikuti ul (subtitle job) */
+        #cv-content p+ul {
+            page-break-before: avoid;
+            break-before: avoid;
+        }
+
+        #cv-content ul,
+        #cv-content li {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 font-sans antialiased">
+    <div class="max-w-4xl mx-auto bg-white p-8 md:p-16 my-10 shadow-lg rounded-lg relative">
+        <div
+            class="absolute top-8 left-8 flex items-center bg-slate-100 rounded-full px-3 py-1 border border-slate-200">
+            <button id="btn-lang-en" class="font-bold text-primary text-sm focus:outline-none">EN</button>
+            <span class="mx-2 text-slate-300">|</span>
+            <button id="btn-lang-id"
+                class="text-secondary font-medium text-sm focus:outline-none hover:text-primary transition-colors">ID</button>
+        </div>
+
+        <a href="/public" class="absolute top-8 right-8 text-sm font-semibold text-primary hover:underline"
+            data-i18n="cv.back">
+            &larr; Back
+        </a>
+
+        <!-- Wadah untuk menampilkan hasil render Markdown -->
+        <div id="cv-content">
+            <p class="text-center text-secondary">Loading CV...</p>
+        </div>
+
+        <div class="mt-10 text-center border-t pt-8 flex justify-center gap-4 flex-wrap">
+            <a href="/public"
+                class="inline-block text-base font-semibold text-primary bg-white border border-primary py-3 px-8 rounded-full hover:shadow-lg hover:bg-slate-50 transition-all duration-300 ease-in-out"
+                data-i18n="cv.back_home">
+                Back to Home
+            </a>
+            <button onclick="downloadPDF()"
+                class="inline-block text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition-all duration-300 ease-in-out"
+                data-i18n="cv.download_pdf">
+                Download PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Language script -->
+    <script src="/public/js/lang.js"></script>
+    <script>
+        function loadCV() {
+            const cvFile = currentLang === 'id' ? '../cv_id.md' : '../cv_en.md';
+
+            document.getElementById('cv-content').innerHTML = '<p class="text-center text-secondary">Loading CV...</p>';
+
+            fetch(cvFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Gagal memuat file CV');
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    // Parse markdown menjadi HTML menggunakan marked.js
+                    const html = marked.parse(text);
+                    const container = document.getElementById('cv-content');
+                    container.innerHTML = html;
+
+                    // Wrap sections into divs with page-break-inside: avoid
+                    const children = Array.from(container.children);
+                    let wrapper = null;
+
+                    children.forEach(node => {
+                        if (node.tagName === 'H2') {
+                            wrapper = document.createElement('div');
+                            wrapper.style.pageBreakInside = 'avoid';
+                            wrapper.style.breakInside = 'avoid';
+                            container.insertBefore(wrapper, node);
+                            wrapper.appendChild(node);
+                            wrapper.dataset.startedWith = 'H2';
+                        } else if (node.tagName === 'H3') {
+                            if (wrapper && wrapper.dataset.startedWith === 'H2') {
+                                // Group first H3 with its preceding H2
+                                wrapper.appendChild(node);
+                                wrapper.dataset.startedWith = 'H3';
+                            } else {
+                                // Start a new wrapper for subsequent H3s
+                                wrapper = document.createElement('div');
+                                wrapper.style.pageBreakInside = 'avoid';
+                                wrapper.style.breakInside = 'avoid';
+                                container.insertBefore(wrapper, node);
+                                wrapper.appendChild(node);
+                                wrapper.dataset.startedWith = 'H3';
+                            }
+                        } else if (wrapper) {
+                            if (node.tagName === 'HR') {
+                                wrapper = null; // stop wrapping at horizontal rules
+                            } else {
+                                wrapper.appendChild(node);
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('cv-content').innerHTML =
+                        '<p class="text-red-500 text-center font-bold">Maaf, terjadi kesalahan saat memuat CV. Pastikan file cv_en.md / cv_id.md ada di folder utama.</p>';
+                    console.error('Error fetching CV:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCV();
+        });
+
+        document.addEventListener('languageChanged', (e) => {
+            loadCV();
+        });
+
+        function downloadPDF() {
+            // Scroll to top to avoid html2canvas blank page bug
+            window.scrollTo(0, 0);
+
+            const element = document.getElementById('cv-content');
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: currentLang === 'id' ? 'CV_Aldy_Naufal_ID.pdf' : 'CV_Aldy_Naufal_EN.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, scrollY: 0 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            const btn = document.querySelector('button[onclick="downloadPDF()"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Generating...';
+            btn.disabled = true;
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+
+</html>
