@@ -1,6 +1,6 @@
 # ALDY NAUFAL ALYYAFI
 📍 Lagoa, North Jakarta 14130 | 📱 +62895618959450 | ✉️ aldinaufalalyyafi@gmail.com |
-🔗 [LinkedIn](https://linkedin.com/in/aldy-naufal-b3781b152/) | 🐙 [GitHub](https://github.com/aldinaufal21) | 🌐 [Portfolio](https://aldinaufal21.github.io/my-portfolio/public/)
+🔗 [LinkedIn](https://linkedin.com/in/aldy-naufal-b3781b152/) | 🐙 [GitHub](https://github.com/aldinaufal21) | 🌐 [Portfolio](https://aldinaufal21.github.io/my-portfolio/)
 
 ---
 
