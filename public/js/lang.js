@@ -51,7 +51,7 @@ const translations = {
 
         "cv.back": "&larr; Back",
         "cv.back_home": "Back to Home",
-        "cv.download_pdf": "Download PDF"
+        "cv.download_pdf": "Download CV"
     },
     id: {
         "nav.home": "Beranda",
@@ -105,7 +105,7 @@ const translations = {
 
         "cv.back": "&larr; Kembali",
         "cv.back_home": "Kembali ke Beranda",
-        "cv.download_pdf": "Unduh PDF"
+        "cv.download_pdf": "Unduh CV"
     }
 };
 
@@ -122,19 +122,26 @@ function applyTranslations(lang) {
     // Handle language toggle button states if they exist
     const btnEn = document.getElementById('btn-lang-en');
     const btnId = document.getElementById('btn-lang-id');
+    const btnEnMob = document.getElementById('btn-lang-en-mob');
+    const btnIdMob = document.getElementById('btn-lang-id-mob');
 
-    if (btnEn && btnId) {
-        if (lang === 'en') {
-            btnEn.classList.add('font-bold', 'text-primary');
-            btnEn.classList.remove('text-secondary', 'font-medium');
-            btnId.classList.remove('font-bold', 'text-primary');
-            btnId.classList.add('text-secondary', 'font-medium');
-        } else {
-            btnId.classList.add('font-bold', 'text-primary');
-            btnId.classList.remove('text-secondary', 'font-medium');
-            btnEn.classList.remove('font-bold', 'text-primary');
-            btnEn.classList.add('text-secondary', 'font-medium');
+    const updateBtns = (activeBtn, inactiveBtn) => {
+        if (activeBtn) {
+            activeBtn.classList.add('font-bold', 'text-primary');
+            activeBtn.classList.remove('text-secondary', 'font-medium');
         }
+        if (inactiveBtn) {
+            inactiveBtn.classList.remove('font-bold', 'text-primary');
+            inactiveBtn.classList.add('text-secondary', 'font-medium');
+        }
+    };
+
+    if (lang === 'en') {
+        updateBtns(btnEn, btnId);
+        updateBtns(btnEnMob, btnIdMob);
+    } else {
+        updateBtns(btnId, btnEn);
+        updateBtns(btnIdMob, btnEnMob);
     }
 }
 
@@ -150,20 +157,23 @@ function setLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     applyTranslations(currentLang);
 
-    const btnEn = document.getElementById('btn-lang-en');
-    const btnId = document.getElementById('btn-lang-id');
+    ['btn-lang-en', 'btn-lang-en-mob'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                setLanguage('en');
+            });
+        }
+    });
 
-    if (btnEn) {
-        btnEn.addEventListener('click', (e) => {
-            e.preventDefault();
-            setLanguage('en');
-        });
-    }
-
-    if (btnId) {
-        btnId.addEventListener('click', (e) => {
-            e.preventDefault();
-            setLanguage('id');
-        });
-    }
+    ['btn-lang-id', 'btn-lang-id-mob'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                setLanguage('id');
+            });
+        }
+    });
 });
