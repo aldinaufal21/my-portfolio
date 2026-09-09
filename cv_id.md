@@ -21,14 +21,19 @@ Saya adalah seorang Backend Developer yang berorientasi pada hasil dengan pengal
 
 ## PENGALAMAN PROFESIONAL
 
-### **Homepay.sg** — *Remote Penuh Waktu*
-**Backend Developer** | *Okt 2023 – Okt 2026*
+### **Homepay.sg** — *Remote*
+**Backend Developer (Penuh Waktu)** | *Nov 2024 – Sekarang*
 * Mengembangkan, memelihara, dan menskalakan integrasi API untuk Aplikasi Homepay menggunakan PHP, Golang, dan MySQL untuk memastikan kinerja sisi server yang optimal.
 * Mengimplementasikan dan mengelola infrastruktur cloud menggunakan AWS (termasuk SES, SNS, dan S3) serta Google Cloud Platform (GCP) untuk mendukung keandalan sistem dan penyimpanan data yang aman.
-* Merancang pemrosesan asinkron yang andal dan alur kerja komunikasi sistem menggunakan sistem antrian pesan serta event streaming seperti RabbitMQ dan Kafka.
+* Mengimplementasikan dan memelihara pemrosesan asinkron yang andal dan alur kerja komunikasi sistem menggunakan sistem antrian pesan serta event streaming seperti RabbitMQ dan Kafka.
 * Mengintegrasikan layanan pihak ketiga yang kompleks untuk meningkatkan kemampuan aplikasi, termasuk Airwallex & Matchmove untuk solusi pembayaran tanpa hambatan, Sendbird dan Firebase untuk pesan waktu nyata dan notifikasi, Google Calendar untuk penjadwalan, serta Mailchimp untuk pemasaran email.
 * Membangun dan mengelola pipeline CI/CD serta mengkontainerisasi aplikasi menggunakan Docker untuk memastikan proses deployment yang cepat, konsisten, dan efisien.
-* Memanfaatkan CodeRabbit AI untuk otomatisasi peninjauan kode, mengidentifikasi peluang perbaikan (opportunities), dan memastikan standar kualitas kode pada setiap pull request.
+* Memanfaatkan CodeRabbit AI untuk otomatisasi peninjauan kode, mengidentifikasi peluang perbaikan, yang menurunkan bug pasca-deployment sebesar 20% untuk memastikan standar kualitas kode yang tinggi pada setiap pull request.
+
+**Backend Developer (Freelance)** | *Okt 2023 – Nov 2024*
+* Mengembangkan layanan backend inti dan endpoint API untuk Homepay for Homeowner dan Homepay Biz dari awal, menerjemahkan persyaratan sistem dan desain arsitektur ke dalam kode yang tangguh dan fungsional.
+* Merancang sistem perpesanan yang andal terintegrasi dengan Firebase Cloud Messaging (FCM), memungkinkan notifikasi waktu nyata dan meningkatkan interaksi pengguna.
+* Berhasil meluncurkan versi awal aplikasi dalam waktu 4 bulan, menyiapkan infrastruktur pembayaran inti.
 
 ### **Pelindo Solution Digital** — *Di Tempat Penuh Waktu*
 **Web Developer** | *Agt 2021 – Nov 2024*
@@ -41,7 +46,7 @@ Saya adalah seorang Backend Developer yang berorientasi pada hasil dengan pengal
 ### **eKopz.id** — *Di Tempat Penuh Waktu*
 **Backend Developer** | *Okt 2019 – Agt 2021*
 * Membangun arsitektur backend yang tangguh dan memelihara integrasi API menggunakan Laravel, Node.js, dan MySQL.
-* Built and managed CI/CD pipelines and containerized applications using Docker to ensure fast, consistent, and efficient deployment processes.
+* Membangun dan mengelola pipeline CI/CD serta mengkontainerisasi aplikasi menggunakan Docker untuk memastikan proses deployment yang cepat, konsisten, dan efisien.
 * Berkontribusi pada penerapan dan pemeliharaan aplikasi web eKopz yang lancar, memastikan ketersediaan tinggi dan efisiensi sistem.
 
 ### **Digital Talent Scholarship**
@@ -72,7 +77,9 @@ Saya adalah seorang Backend Developer yang berorientasi pada hasil dengan pengal
 
 ## PROYEK PERSONAL
 
+* **Aplikasi Acara Pertambangan & Energi (Microservices):** Merancang platform acara berbasis layanan mikro, mengembangkan layanan autentikasi Golang (mee-auth-service) menggunakan PostgreSQL dan JWT, bersama dengan backend inti khusus (mee-event-service).
 * **Captionara (AI & Otomatisasi):** Mengembangkan pembuat keterangan berbasis AI untuk media sosial yang dibangun dengan Golang dan React Native ([captionara.com](https://captionara.com/)).
+* **fast-text-censor (Paket NPM Open-Source):** Mengubah algoritma moderasi teks berbasis Ruby menjadi pustaka Node.js open-source berkinerja tinggi. Mengimplementasikan alur kerja CI/CD otomatis menggunakan GitHub Actions untuk pengujian, kontrol versi, dan deployment paket yang mulus. ([npmjs.com/package/fast-text-censor](https://www.npmjs.com/package/fast-text-censor))
 * **Aplikasi Enterprise & Manajemen:** Mengembangkan berbagai sistem termasuk Aplikasi ERP, Manajemen Asuransi, Proyek Pengadaan Manajemen (Procurement), penjualan toko online, dan manajemen anggota koperasi menggunakan Laravel dan MySQL.
 * **Sistem Kesehatan:** Membangun sistem antrian pasien dan manajemen pemeriksaan untuk Puskesmas Mulyaharja Bogor menggunakan Laravel dan MySQL.
 * **Situs Web / CMS:** Mengembangkan situs web profil perusahaan untuk Juragan Kios (WordPress) dan eKopz (HTML, CSS, JavaScript).
