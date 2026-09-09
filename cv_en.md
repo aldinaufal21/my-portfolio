@@ -50,7 +50,7 @@ I am a Backend Developer with solid experience in building scalable, high-perfor
 * Contributed to the seamless deployment and maintenance of the eKopz web application, ensuring high availability and system efficiency.
 
 ### **Digital Talent Scholarship**
-**Instructor - Junior Web Developer** | *Nov 2019*
+**Instructor - Junior Web Developer** | *Nov 2019 (1 Month)*
 * Instructed and mentored scholarship students in foundational web development technologies, including HTML, CSS, PHP, and JavaScript.
 
 ---
@@ -70,7 +70,7 @@ I am a Backend Developer with solid experience in building scalable, high-perfor
 
 ### **StartupHub.id**
 **Product Development** | *Jul 2019 – Aug 2020*
-* Lead the technical development and maintenance of product web applications using WordPress and Laravel frameworks.
+* Led the technical development and maintenance of product web applications using WordPress and Laravel frameworks.
 * Developed and successfully launched the official StartupHub.id company profile application.
 
 ---

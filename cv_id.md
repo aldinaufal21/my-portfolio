@@ -50,7 +50,7 @@ Saya adalah seorang Backend Developer yang berorientasi pada hasil dengan pengal
 * Berkontribusi pada penerapan dan pemeliharaan aplikasi web eKopz yang lancar, memastikan ketersediaan tinggi dan efisiensi sistem.
 
 ### **Digital Talent Scholarship**
-**Instruktur - Junior Web Developer** | *Nov 2019*
+**Instruktur - Junior Web Developer** | *Nov 2019 (1 Bulan)*
 * Mengajar dan membimbing siswa beasiswa dalam teknologi pengembangan web dasar, termasuk HTML, CSS, PHP, dan JavaScript.
 
 ---
